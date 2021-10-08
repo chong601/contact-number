@@ -46,6 +46,8 @@ class ContactsController extends Controller
     public function show($id)
     {
         $contact = Contacts::find($id);
+        $contact->last_viewed = date('c');
+        $contact->save();
         if($contact)
         {
             return response()->json($contact);
